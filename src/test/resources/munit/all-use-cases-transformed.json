@@ -1,0 +1,62 @@
+[
+  {
+    "firstName": "Alexandra",
+    "lastName": "Martinez",
+    "birthDate": "1800-09-21",
+    "deathDate": null,
+    "isAlive": true,
+    "age": 220,
+    "isVampire": true,
+    "wasVampire": false,
+    "couldBeVampire": true,
+    "text": "Alexandra Martinez is a vampire!"
+  },
+  {
+    "firstName": "Frida",
+    "lastName": "Kahlo",
+    "birthDate": "1907-07-06",
+    "deathDate": "1954-07-13",
+    "isAlive": false,
+    "age": 47,
+    "isVampire": false,
+    "wasVampire": false,
+    "couldBeVampire": false,
+    "text": "Frida Kahlo is not a vampire. All good!"
+  },
+  {
+    "firstName": "Linus",
+    "lastName": "Torvalds",
+    "birthDate": "1969-12-28",
+    "deathDate": null,
+    "isAlive": true,
+    "age": 51,
+    "isVampire": false,
+    "wasVampire": false,
+    "couldBeVampire": false,
+    "text": "Linus Torvalds is not a vampire. All good!"
+  },
+  {
+    "firstName": "Oralia",
+    "lastName": "Medina",
+    "birthDate": "1920-08-05",
+    "deathDate": null,
+    "isAlive": true,
+    "age": 100,
+    "isVampire": false,
+    "wasVampire": false,
+    "couldBeVampire": true,
+    "text": "Oralia Medina is not a vampire (yet). But be careful..."
+  },
+  {
+    "firstName": "Jeanne",
+    "lastName": "Calment",
+    "birthDate": "1875-02-21",
+    "deathDate": "1997-08-04",
+    "isAlive": false,
+    "age": 122,
+    "isVampire": false,
+    "wasVampire": true,
+    "couldBeVampire": false,
+    "text": "Jeanne Calment was a vampire, but not anymore!"
+  }
+]

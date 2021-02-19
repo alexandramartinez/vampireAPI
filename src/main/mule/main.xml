@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:anypoint-mq="http://www.mulesoft.org/schema/mule/anypoint-mq" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/anypoint-mq http://www.mulesoft.org/schema/mule/anypoint-mq/current/mule-anypoint-mq.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="74f31d62-4d00-467c-b998-dcf025104ce5" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<anypoint-mq:config name="Anypoint_MQ_Config" doc:name="Anypoint MQ Config" doc:id="d985c127-02bf-4f78-8f29-923a421ca883" >
+		<anypoint-mq:connection clientId="test" clientSecret="test" />
+	</anypoint-mq:config>
+	<flow name="main:http-listener" doc:id="a9d7ca06-9f01-45c8-b980-402bee733a50" >
+		<http:listener doc:name="Listener" doc:id="6197594a-acc0-466e-82a7-d71768e10bc7" config-ref="HTTP_Listener_config" path="/test"/>
+		<logger level="INFO" doc:name="START" doc:id="43d24a2f-4609-46fd-b46e-7a7cd86b9f98" message="START FLOW"/>
+		<ee:transform doc:name="Add fields" doc:id="0f74730c-a231-4196-aed9-b3765a77fd5e" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+import between from dw::core::Periods
+
+fun getAge(birthDate: Date, deathDate: Date | Null) = do {
+	var date2 = deathDate match {
+		case d is Date -> d
+		else -> now() as Date
+	}
+	---
+    between(date2, birthDate).years
+}
+---
+payload map do {
+    var isAlive = $.deathDate == null
+    var age = getAge($.birthDate, $.deathDate)
+    var isVampire = age >= 120 and isAlive
+    var wasVampire = age >= 120 and not isAlive
+    var couldBeVampire = age >= 100 and isAlive
+    var vampireStatus = if (isVampire) "is a vampire!"
+        else if (wasVampire) "was a vampire, but not anymore!"
+        else if (couldBeVampire) "is not a vampire (yet). But be careful..."
+        else "is not a vampire. All good!"
+    ---
+	{
+        ($),
+	    isAlive: isAlive,
+	    age: age,
+        isVampire: isVampire,
+        wasVampire: wasVampire,
+        couldBeVampire: couldBeVampire,
+        text: "$($.firstName) $($.lastName) $(vampireStatus)"
+    }
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<foreach doc:name="For Each person" doc:id="1090001f-3b4e-4a8d-a9ad-a524a0b2b69d" >
+			<anypoint-mq:publish doc:name="Publish to queue (INCOMPLETE)" doc:id="63c87374-19ba-4c17-bb14-f14aa87fbae5" config-ref="Anypoint_MQ_Config" destination="test"/>
+		</foreach>
+		<logger level="INFO" doc:name="END" doc:id="308d39b9-ed6a-486e-ac20-6c4041bcffeb" message="END FLOW"/>
+	</flow>
+</mule>

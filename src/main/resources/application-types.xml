@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="p-list" format="json">
+      <types:shape format="weave" example="examples/sample-input.json"><![CDATA[%dw 2.0
+
+type p_list = Array<{|  firstName: String,   lastName: String,   birthDate: String,   deathDate: Null|}> {"example": "[{\\\"firstName\\\":\\\"Alexandra\\\",\\\"lastName\\\":\\\"Martinez\\\",\\\"birthDate\\\":\\\"1800-09-21\\\",\\\"deathDate\\\":null},{\\\"firstName\\\":\\\"Frida\\\",\\\"lastName\\\":\\\"Kahlo\\\",\\\"birthDate\\\":\\\"1907-07-06\\\",\\\"deathDate\\\":\\\"1954-07-13\\\"},{\\\"firstName\\\":\\\"Linus\\\",\\\"lastName\\\":\\\"Torvalds\\\",\\\"birthDate\\\":\\\"1969-12-28\\\",\\\"deathDate\\\":null}]"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#0f74730c-a231-4196-aed9-b3765a77fd5e">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="p-list"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

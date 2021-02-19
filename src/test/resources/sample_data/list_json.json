@@ -1,0 +1,32 @@
+[
+	{
+		"firstName": "Alexandra",
+		"lastName": "Martinez",
+		"birthDate": "1800-09-21",
+		"deathDate": null
+	},
+	{
+		"firstName": "Frida",
+		"lastName": "Kahlo",
+		"birthDate": "1907-07-06",
+		"deathDate": "1954-07-13"
+	},
+	{
+		"firstName": "Linus",
+		"lastName": "Torvalds",
+		"birthDate": "1969-12-28",
+		"deathDate": null
+	},
+    {
+		"firstName": "Oralia",
+		"lastName": "Medina",
+		"birthDate": "1920-08-05",
+		"deathDate": null
+	},
+    {
+		"firstName": "Jeanne",
+		"lastName": "Calment",
+		"birthDate": "1875-02-21",
+		"deathDate": "1997-08-04"
+	}
+]
