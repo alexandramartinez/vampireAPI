@@ -53,9 +53,7 @@ payload map do {
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<foreach doc:name="For Each person" doc:id="1090001f-3b4e-4a8d-a9ad-a524a0b2b69d" >
-			<anypoint-mq:publish doc:name="Publish to queue (INCOMPLETE)" doc:id="63c87374-19ba-4c17-bb14-f14aa87fbae5" config-ref="Anypoint_MQ_Config" destination="test"/>
-		</foreach>
+		<anypoint-mq:publish doc:name="Publish to queue (INCOMPLETE)" doc:id="63c87374-19ba-4c17-bb14-f14aa87fbae5" config-ref="Anypoint_MQ_Config" destination="test" />
 		<logger level="INFO" doc:name="END" doc:id="308d39b9-ed6a-486e-ac20-6c4041bcffeb" message="END FLOW"/>
 	</flow>
 </mule>
