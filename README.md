@@ -4,8 +4,8 @@ Code used to demonstrate the "Basic MUnit Components for unit testing" presentat
 
 ## Prerequisites
 
-- Download and install Anypoint Studio 7 from here: https://www.mulesoft.com/lp/dl/studio
-- If you're new to Mule, you can follow this tutorial to learn the basics: https://developer.mulesoft.com/tutorials-and-howtos/getting-started/hello-mule
+- Download and install Anypoint Studio 7 from [this link](https://www.mulesoft.com/lp/dl/studio)
+- If you're new to Mule, you can follow this tutorial to learn the basics: [Getting started with MuleSoft](https://developer.mulesoft.com/tutorials-and-howtos/getting-started/hello-mule)
 
 ## To import project in Anypoint Studio
 
