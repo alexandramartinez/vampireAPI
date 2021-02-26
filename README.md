@@ -1,6 +1,7 @@
 # Vampire API - Mule 4 Application
 
-Code used to demonstrate the "Basic MUnit Components for unit testing" presentation.
+Code used to demonstrate the "What is MUnit and how to create your first unit test" presentation.
+Link to the presentation can be found [here](https://www.slideshare.net/AlexandraNahomiMartn/what-is-munit-and-how-to-create-your-first-unit-test).
 
 ## Prerequisites
 
